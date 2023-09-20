@@ -48,10 +48,17 @@ function elaborateInput() {
 
     const table = document.querySelector('.output-table');
 
-    createTableOutput(table,selectedProperties,inputObject);
+    createTableOutput(table,selectedProperties,extractedObj);
 }
 
 function createTableOutput (table, headers, data) {
+
+    //clear current table
+    let currentTable = document.querySelector('.output-table');
+    while (currentTable.firstChild) {
+        currentTable.removeChild(currentTable.firstChild);
+    }
+
     //create header row
     const row = document.createElement('tr');
     headers.forEach((prop) => {
@@ -64,9 +71,10 @@ function createTableOutput (table, headers, data) {
     //data is an array of objects. Each object is a new tr
     for(let i=0; i < data.length; i++) {
         const row = document.createElement('tr');
-        for(let j=0; j < data[i].length; j++) {
+        for(let j=0; j < Object.keys(data[i]).length; j++) {
             const td = document.createElement('td');
-            td.textContent = data[i][j];
+            let tdData = Object.values(data[i]);
+            td.textContent = tdData[j];
             row.appendChild(td);
         }
         table.appendChild(row);
