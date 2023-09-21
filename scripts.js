@@ -47,9 +47,22 @@ function elaborateInput() {
 
 
     const table = document.querySelector('.output-table');
-
     createTableOutput(table,selectedProperties,extractedObj);
+
+
+    const tsvOutput = convertObjectToCsv(extractedObj,selectedProperties);
+    console.log(tsvOutput);
+
+
+    let copyButton = document.querySelector('.copy-button');
+    copyButton.addEventListener('click',() => {
+        navigator.clipboard.writeText(tsvOutput);
+    })
+
+    return extractedObj
+
 }
+
 
 function createTableOutput (table, headers, data) {
 
@@ -81,4 +94,21 @@ function createTableOutput (table, headers, data) {
     }
 
 }
+
+function convertObjectToCsv (obj,selectedProperties) {
+    const rows = [];
+    const headerRow = selectedProperties.join('\t');
+    rows.push(headerRow);
+
+    for (const object of obj) {
+        const values = Object.values(object).join('\t');
+        rows.push(values);
+    }
+    
+    const tsvContent = rows.join('\n');
+
+    return tsvContent
+}
+
+
 

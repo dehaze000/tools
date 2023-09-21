@@ -1,48 +1,60 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" type="text/css" href="styles.css"/>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
 </head>
+
 <body>
     <div class="container">
         <div class="input-container">
             <p class="instructions">Input array of objects</p>
             <p class="example">[
                 {
-                    "prop1": "test1",
-                    "prop2": 123,
-                    "prop3": true,
-                    "propNested":{
-                        "nested1":"nestedTest1"
-                    }
+                "prop1": "test1",
+                "prop2": 123,
+                "prop3": true,
+                "propNested":{
+                "nested1":"nestedTest1"
+                }
                 },
                 {
-                    "prop1": "test2",
-                    "prop2": 456,
-                    "nested1":"notok"
+                "prop1": "test2",
+                "prop2": 456,
+                "nested1":"notok"
                 }
-            ]</p>
+                ]</p>
             <div class="input-bar">
-                <input class="input sourcedata-input"></div>
-            </div>
-        </div>
-        <div class="input-container">
+                <input class="input sourcedata-input" placeholder="Input array of objects here"></div>
             <p class="instructions">Input array of properties to check</p>
             <p class="example">["prop1","prop2","propNested.nested1"]</p>
             <div class="input-bar">
-                <input class="input properties-input"></div>
-            </div>
+                <input class="input properties-input" placeholder="Input array of keys to check here"></div>
             <button class="confirm-button" onclick="elaborateInput()">Continue</button>
         </div>
-        <div class="output-container">
-            <table class ="output-table">
 
-            </table>
+
+
+        <div class="output-container">
+            <div class="flex-container">
+                <p class="instructions">Output below:</p>
+                <div class="copy">
+                    <button class="copy-button">
+                        <img src="assets/copy-svgrepo-com.svg">
+                    </button>
+                </div>
+            </div>
+            <div class="table-container">
+                <table class="output-table">
+
+                </table>
+            </div>
         </div>
     </div>
     <script src="scripts.js"></script>
 </body>
+
 </html>
